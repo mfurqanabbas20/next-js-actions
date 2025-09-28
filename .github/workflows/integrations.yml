@@ -4,9 +4,9 @@ name: Integrations CI
 # on mtlb is is kaam pr
 on:
    push:
-      branches: [ "main" ]
+      branches: [ "development" ]
    pull_request:
-      branches: [ "main" ]
+      branches: [ "development" ]
 # on pull request to the main branch
 
 jobs:
@@ -15,37 +15,17 @@ jobs:
     runs-on: "ubuntu-latest"
     strategy:
       matrix: 
-        node-version: [14.x, 16.x, 18.x]
-  steps:
-  # tells github to checkotu to current branch
-  - uses: actions/checkout@v4
-  - name: Use Nodejs 
-  # setup the node env before doing anything
-    uses: actions/setup-node@v3
-    # setup with several node versions
-    with: 
-      node-version: ${{matrix.node-version}}
-      cache: 'npm'
-  - run: npm i
-  - run: npm run build
-
-jobs:
-  unit-tests: 
-  # which particular machine github should use on their server
-    runs-on: "ubuntu-latest"
-    strategy:
-      matrix: 
-        node-version: [14.x, 16.x, 18.x]
-  steps:
-  # tells github to checkotu to current branch
-  - uses: actions/checkout@v4
-  - name: Use Nodejs 
-  # setup the node env before doing anything
-    uses: actions/setup-node@v3
-    # setup with several node versions
-    with: 
-      node-version: ${{matrix.node-version}}
-      cache: 'npm'
-  - run: npm i
-  - run: npm run test
-
+        node-version: [20.x, 22.x, 24.x]
+    steps:
+    # tells github to checkotu to current branch
+    - uses: actions/checkout@v4
+    - name: Use Nodejs 
+    # setup the node env before doing anything
+      uses: actions/setup-node@v3
+      # setup with several node versions
+      with: 
+        node-version: ${{matrix.node-version}}
+        cache: 'npm'
+    - run: npm i
+    - run: npm run build
+  
