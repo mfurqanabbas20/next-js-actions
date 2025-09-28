@@ -4,9 +4,9 @@ name: Integrations CI
 # on mtlb is is kaam pr
 on:
    push:
-      branches: [ "main" ]
+      branches: [ "development" ]
    pull_request:
-      branches: [ "main" ]
+      branches: [ "development" ]
 # on pull request to the main branch
 
 jobs:
